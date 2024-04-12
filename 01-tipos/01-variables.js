@@ -12,3 +12,9 @@ console.log(nombre);
 let apellido;
 apellido ='Gonzalez'
 
+
+
+let num;
+num =2;
+console.log(num);
+

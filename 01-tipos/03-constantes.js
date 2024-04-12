@@ -5,3 +5,7 @@ const nombre = 'Sg'; // el valor que se le da no se podrá cambiar
 //nombre = "Chnchito feliz";
 
 console.log(nombre);
+
+const num = 2;
+num = 5;
+console.log(num);
