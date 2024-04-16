@@ -1,6 +1,6 @@
 // cuales son los numero pares
 
-let i= 0;
+let i= 2;
 
 //while (i< 3){
 //    if ( i % 2 ==0){
