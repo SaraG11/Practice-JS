@@ -20,5 +20,8 @@ let resultado = [...carrito, producto];
 
 resultado = [...carrito, producto2];
 
+//remplazar el unshift
+resultado = [producto3, ...resultado ];
+
 
 console.table(resultado);
