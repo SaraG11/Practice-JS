@@ -8,3 +8,8 @@ const puedePagar= false;
 // if anidado en ternario
 console.log(autenticado ? puedePagar ? 'Si esta autentidado y puede' : 'Si autenticado, no puede' : 'no puede pagar');
 
+
+
+
+
+
