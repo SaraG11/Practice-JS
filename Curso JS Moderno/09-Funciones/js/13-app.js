@@ -23,3 +23,24 @@ reproductor.obtenerCancion // en get no necesita agregar el parentesis
 
 // reproductor.crearplaylist('Rock 90s');
 // reproductor.reproducirplaylist('Rock 90s');
+
+/* ejercicio
+
+function areaPoligono(figura, altura, base){
+    //altura= 9;
+    //base= 10;
+    if(figura == 'Triangulo'){
+        areaTotal = (base * altura) / 2;
+        return console.log(`El area del ${figura} es de ${areaTotal}`);
+    }else if(figura == 'Cuadrado'){
+        areaTotal = altura * altura;
+        return console.log(`El area del ${figura} es de ${areaTotal}`);
+    }else if(figura == 'Rectangulo'){
+        areaTotal = base *altura;
+        return console.log(`El area del ${figura} es de ${areaTotal}`);
+    }else{
+        console.log('Error de poligono soportado');
+    }
+}
+
+areaPoligono('Cuadrado', 8, 6);*/
