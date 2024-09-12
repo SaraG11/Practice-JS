@@ -20,5 +20,3 @@ Object.freeze(producto);
 
 // nos dice si el objeto esta congelado
 console.log(Object.isFrozen(producto));
-
-

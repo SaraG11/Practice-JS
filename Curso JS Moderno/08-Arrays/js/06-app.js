@@ -14,6 +14,10 @@ const producto3 ={
     nombre: "Teclado",
     precio: 500
 }
+const producto4 ={
+    nombre: "Teclado 2.9",
+    precio: 400
+}
 
 // forma oimperartiva
 let resultado = [...carrito, producto];
@@ -23,5 +27,6 @@ resultado = [...carrito, producto2];
 //remplazar el unshift
 resultado = [producto3, ...resultado ];
 
+resultado = [...resultado, producto4 ];
 
 console.table(resultado);

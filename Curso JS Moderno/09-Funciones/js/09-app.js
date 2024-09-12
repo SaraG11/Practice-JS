@@ -29,3 +29,4 @@ reproductor.borrar = function(id){
 //reproductor.borrar(30);
 reproductor.crearplaylist('Rock 90s');
 reproductor.reproducirplaylist('Rock 90s');
+ 

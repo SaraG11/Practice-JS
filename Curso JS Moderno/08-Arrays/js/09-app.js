@@ -8,15 +8,20 @@ const carrito = [
     {nombre: 'Tablet', precio: 200},
 ]
 
+// const numeros = [10, 15, 20, 25];
 
+// numeros.forEach( function (mayor){
+//     console.log(mayor)
+// })
 
 // iterador
 
-for(let i=0; i < carrito.length; i++){
-    console.log(`${carrito[i].nombre} - Precio: ${carrito[i].precio }` );
-}
+// for(let i=0; i < carrito.length; i++){
+//     console.log(`${carrito[i].nombre} - Precio: ${carrito[i].precio }` );
+// }
 
 //Array method
 carrito.forEach( function(producto){
     console.log(`${producto.nombre} - Precio: ${producto.precio }` );
 })
+

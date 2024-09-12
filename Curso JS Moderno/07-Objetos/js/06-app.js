@@ -17,6 +17,6 @@ const producto = {
 console.log(nombre);*/
 
 //extraer infoirmacion con DESTUCTIORING
-const {informacion, fabricacion} = producto;
+// const {informacion, fabricacion} = producto;
 const {nombre, informacion: { medidas: { medida }}} = producto;
-console.log(pais);
+console.log(medida);

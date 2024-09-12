@@ -16,3 +16,6 @@ function Producto(nombre, precio) {
 
 const producto2 = new Producto('Monitor 24 p', 500);
 console.log(producto2);
+
+const producto3 = new Producto('Tablet', 4000);
+console.log(producto3);

@@ -11,8 +11,8 @@ const medidas = {
 
 // Unir dos objetos
 
-console.log(producto);
-console.log(medidas);
+// console.log(producto);
+// console.log(medidas);
 
 const resultado = Object.assign(producto, medidas);
 
@@ -21,5 +21,5 @@ const resultado = Object.assign(producto, medidas);
 //los tres puntos, dice que copie todo lo que esta en producto
 const resultado2 = {...producto, ...medidas}
 
-console.log(resultado);
+// console.log(resultado);
 console.log(resultado2);

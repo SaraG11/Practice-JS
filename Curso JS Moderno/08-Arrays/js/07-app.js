@@ -37,5 +37,5 @@ console.table(carrito);
 carrito.shift();
 console.table(carrito);*/
 //eliminar cualquier elemento 
-carrito.splice(1, 1);
+carrito.splice(0, 2);
 console.table(carrito);
