@@ -17,6 +17,10 @@
                     <label for="email" class="font-regular font-medium">Email:</label>
                     <input id="email" type="email" name="email" placeholder="Email Destino, ej: mkt@empresa.com" class="border border-gray-300 px-3 py-2 rounded-lg"  />
                 </div>
+                <div class="flex flex-col space-y-2">
+                    <label for="email" class="font-regular font-medium">Email CC:</label>
+                    <input id="emailCC" type="email" name="email" placeholder="Email Destino, ej: mkt@empresa.com" class="border border-gray-300 px-3 py-2 rounded-lg"  />
+                </div>
 
                 <div class="flex flex-col space-y-2">
                     <label for="asunto" class="font-regular font-medium">Asunto:</label>
@@ -52,7 +56,7 @@
                 </div>           
             </form>
             <!-- epinkit -->
-            <div class="hidden flex justify-center mt-10">
+            <div id="spinner" class="hidden justify-center mt-10">
                 <div class="sk-chase">
                     <div class="sk-chase-dot"></div>
                     <div class="sk-chase-dot"></div>
