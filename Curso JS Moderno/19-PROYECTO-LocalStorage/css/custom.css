@@ -14,7 +14,7 @@ h1, h2 {
 }
 
 .error {
-    background-color: red;
+    background-color: rgb(214, 57, 57);
     text-align: center;
     padding: 10px;
     text-transform: uppercase;
