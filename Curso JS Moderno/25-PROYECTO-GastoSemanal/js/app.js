@@ -17,6 +17,18 @@ class Presupuesto{
         this.restante = Number(presupuesto);
         this.gastos = [];
     }
+    nuevoGasto(gasto){
+        this.gastos = [ ...this.gastos, gasto]
+        this.calcularRestante();
+
+    }
+
+    calcularRestante(){
+        const gastado = this.gastos.reduce( (total, gasto) => total + gasto.cantidad, 0)
+        this.restante = this.presupuesto - gastado;
+
+        console.log(this.restante)
+    }
 }
 
 class UI{
@@ -52,6 +64,63 @@ class UI{
 
     }
 
+    agregarGastoListado(gastos){
+        clearHTML();
+        // iterar sobre los gastos
+        gastos.forEach(gasto => {
+
+            const { cantidad, nombre, id} = gasto;
+
+            // crear li
+            const nuevoGasto = document.createElement('li');
+            nuevoGasto.className = 'list-group-item d-flex justify-content-between align-items-center';
+            // nuevoGasto.setAttribute('data-id', id)
+            nuevoGasto.dataset.id = id;
+
+            // agregar el html del gasto
+            nuevoGasto.innerHTML = ` ${nombre} <span class="badge badge-primary badge-pill"> $${cantidad} </span>`;
+
+            // boton para borrar el gasto
+            const btnBorrar = document.createElement('button');
+            btnBorrar.classList.add('btn', 'btn-danger', 'borrar-gasto');
+            btnBorrar.innerHTML = 'Borrar &times';
+
+            btnBorrar.onclick = () => {
+                eliminarGasto(id);
+            }
+            nuevoGasto.appendChild(btnBorrar)
+
+            // agregar al html 
+            gastoListado.appendChild(nuevoGasto);
+
+        });
+
+    }
+    actualizarRestante(restante){
+        document.querySelector('#restante').textContent = restante;
+    }
+
+    comprobarPresupuesto( presupuestoObj ){
+        const { presupuesto, restante } = presupuestoObj;
+        const restanteDiv = document.querySelector('.restante');
+
+        // comprobrobar 25%
+        if ((presupuesto / 4 ) > restante ){
+            restanteDiv.classList.remove('alert-success', 'alert-warning');
+            restanteDiv.classList.add('alert-danger')
+        }else if(( presupuesto / 2) > restante){
+            restanteDiv.classList.remove('alert-success');
+            restanteDiv.classList.add('alert-warning')
+        }
+
+        // Si el presupuesto es 0 o menor
+        if(restante <= 0){
+            ui.imprimiAlerta('El presupuesto se ha agotado', 'error');
+
+            formulario.querySelector('button[type="submit"').disablded = true;
+        }
+    }
+
 }
 
 // Instancias
@@ -67,7 +136,7 @@ function preguntarPresupuesto(){
     if(presupuestoUsuario === ''|| presupuestoUsuario === 'null' || isNaN(presupuestoUsuario || presupuestoUsuario <= 0)){
         window.location.reload();
     }
-    // Presupuesto validado
+    // Presupuesto validado, instanciando la clase de Presupuesto
     presupuesto = new Presupuesto(presupuestoUsuario)
     console.log(presupuesto)
 
@@ -79,7 +148,7 @@ function agregarGasto(e){
     e.preventDefault();
     // leer datos del formulario
     const nombre = document.querySelector('#gasto').value;
-    const cantidad = document.querySelector('#cantidad').value;
+    const cantidad = Number(document.querySelector('#cantidad').value);
 
     // validar
     if( nombre === '' || cantidad === ''){
@@ -93,4 +162,34 @@ function agregarGasto(e){
     }
 
     console.log('Agregando gastos...')
+
+    // Objeto con el gasto
+    const gasto = { nombre, cantidad, id: Date.now() }
+
+    // añade un nuevo gasto
+    presupuesto.nuevoGasto( gasto );
+    ui.imprimiAlerta('Gasto agregado correctamente')
+
+    // Imprimir los gastos
+    const { gastos, restante } = presupuesto;
+    ui.agregarGastoListado( gastos)
+
+    ui.actualizarRestante( restante )
+
+    ui.comprobarPresupuesto( presupuesto )
+
+    // Reinicia el formulario
+    formulario.reset();
+    
+}
+
+// Limpiar HTML
+function clearHTML(){
+    while(gastoListado.firstChild){
+        gastoListado.removeChild(gastoListado.firstChild)
+    }
+}
+
+function eliminarGasto(id){
+    console.log('eliminando', id)
 }
