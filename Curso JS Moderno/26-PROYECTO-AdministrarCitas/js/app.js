@@ -7,7 +7,7 @@ const sintomasInput = document.querySelector('#sintomas');
 const contenedorCitas = document.querySelector('#citas');
 
 const formulario = document.querySelector('#formulario-cita')
-const formularioInput = document.querySelector('#formulario-cita')
+const formularioInput = document.querySelector('#formulario-cita input[type="submit"]')
 const btnEditar = document.querySelector('.btn-editar')
 
 
@@ -61,7 +61,7 @@ class Notificacion{
         // quitar despues de 5seg
         setTimeout(() =>{
             alerta.remove()
-        }, 2000);
+        }, 5000);
     }
 }
 
@@ -80,6 +80,12 @@ class AdminCitas{
         this.mostrar()
     }
 
+    eliminar(id){
+        this.citas = this.citas.filter( cita => cita.id !== id)
+        this.mostrar()
+        // console.log(id)
+    }
+
 
     mostrar(){
         // Limpiar el html previo 
@@ -87,6 +93,11 @@ class AdminCitas{
              contenedorCitas.removeChild(contenedorCitas.firstChild)
         }
 
+        // SI hay pacientes 
+        if(this.citas.length === 0){
+            contenedorCitas.innerHTML = '<p class="text-xl mt-5 mb-10 text-center">No Hay Pacientes</p>';
+            return
+        } 
         // Generando las citas 
         this.citas.forEach(cita => {
             const divCita = document.createElement('div');
@@ -123,7 +134,8 @@ class AdminCitas{
             const btnEliminar = document.createElement('button');
             btnEliminar.classList.add('py-2', 'px-10', 'bg-red-600', 'hover:bg-red-700', 'text-white', 'font-bold', 'uppercase', 'rounded-lg', 'flex', 'items-center', 'gap-2');
             btnEliminar.innerHTML = 'Eliminar <svg fill="none" class="h-5 w-5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
-                    
+            btnEliminar.onclick = () => this.eliminar(cita.id)
+
             const contenedorBotones = document.createElement('DIV')
             contenedorBotones.classList.add('flex', 'justify-between', 'mt-10')
             contenedorBotones.appendChild(btnEditar)
@@ -180,6 +192,8 @@ function submitCita(e){
     
     formulario.reset();
     reiniciarObjCita();
+    formularioInput.value = 'Registrar Paciente'
+    editando = false;
     
 } 
 
@@ -218,5 +232,6 @@ function cargarEdicion(cita){
     sintomasInput.value = cita.sintomas
 
     editando = true;
+    formularioInput.value = 'Guardar Cambios'
 
 }
